@@ -36,6 +36,8 @@ Usage:
   // 1. options( Object, Array )
   var options = $.mooLib.options.create( firstObject );
   
+  // options.stream will be [ firstObject ]
+  
   // ***** API ***** //
   
   // .grab
@@ -55,21 +57,31 @@ Usage:
   options.grab('city')
   // return 'Jakarta'
   
+  // options.stream will be [ secondObject, firstObject ]
+  
   // Basically options is an array of 'Object' or 'Array', 
-  // we first searching value starting from zero index, 
+  // we first searching value starting from zero index,
   // the first 'Object' or 'Array', if the value can't be found, 
   // then it will start searching to the next array value and so on, 
   // basically '.front' is array.unshift, while '.behind' is array.push 
+  
+  // Demo
+  var propertyName = "testingProperty";
+  var array = [ "A", "B", "C" ];
+  // it will search 'propertyName' in A, 
+  // if propertyName exists, it will return A[ propertyName ] value
+  // if not, it will searching into the next array and so on, ie: to "B", to "C"
   
   // .behind
   
   // params:
   // 1. options( Object, Array )
   options.behind( thirdObject );
+
+  // options.stream will be [ secondObject, firstObject, thirdObject ]
   
   options.grab('province')
   // return 'Jawa Timur'
-  
   
   // .grabEach
   // get value of propertyName in every Object available, returning an Array
@@ -85,3 +97,6 @@ Usage:
 ```
 
 
+###### $.mooLib.eventDispatcher.create
+
+*Ordinary event dispatcher, just for personal use, hehehe*
