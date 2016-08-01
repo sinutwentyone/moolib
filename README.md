@@ -100,3 +100,43 @@ Usage:
 ###### $.mooLib.eventDispatcher.create
 
 *Ordinary event dispatcher, just for personal use, hehehe*
+
+Usage:
+
+```javascript
+  // initialize
+  var eventDispatcher = $.mooLib.eventDispatcher.create(),
+      objTest = {};
+      
+  objTest.a = 1;
+  
+  function addCallback( value ) {
+    objTest.a += value.response || 1;
+  }
+  
+  function subCallback( value ) {
+    objTest.a -= value.response || 1;
+  }
+  // .bind
+  // bind function to a specific event
+  eventDispatcher.bind( 'add', addCallback );
+  eventDispatcher.bind( 'sub', subCallback );
+  
+  // callback will invoked with object as the first parameter
+  // and have 'response' property that filled with value
+  // from dispatch parameter
+  
+  // .dispatch
+  
+  // params: 
+  // eventName( String )
+  // response( * )
+  eventDispatcher.dispatch( 'add', 2 ); 
+  objTest.a;
+  // 3
+  
+  eventDispatcher.dispatch( 'sub', 3 );
+  objTest.a;
+  // 0
+```
+
