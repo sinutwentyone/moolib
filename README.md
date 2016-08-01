@@ -221,6 +221,7 @@ Params:
 - function( Function )
 - context( * ), the 'this'
 - arguments( * )
+
 see: [Function.prototype.apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
 Usage:
@@ -229,3 +230,38 @@ Usage:
   $.mooLib.applyFunction( function() {}, null, [ 1, 2,3 ] );
   $.mooLib.callFunction( function() {}, null, 1, 2, 3 );
 ```
+
+###### $.mooLib.asyncAll
+
+*Similiar to Promise.all, resolve when every promises has been resolved, if one promise fail, the asyncAll fail*
+
+Usage:
+
+```javascript
+  // params:
+  // 1.promises ( array of promises/function that return a promise or any type of data )
+  
+  // return: jQuery deferred.promise()
+  
+  $.mooLib.asyncAll([ jQuery.Deferred(), funcThatReturnJqueryDeferredPromise ]);
+```
+
+###### $.mooLib.deferSyncFirst.create
+
+*Syncronious jQuery Promise that take promises as an arguments, and resolve/reject when a promise get resolved/rejected*
+
+Usage:
+
+```javascript
+  var ArrayOfPromisesExample = [ aPromise, bPromise, cPromise ]
+  // take array of jQuery promises as an argument
+  var deferred = $.mooLib.deferSyncFirst( arrayOfPromisesExample );
+  // if aPromise get resolved, the 'deferred' get resolved
+  // if aPromise get rejected, it will run bPromise and
+  // iterating with the same action trough every promises
+  // if the last promise get rejected ( ie: cPromise ),
+  // 'deferred' will get a rejection from cPromise
+```
+
+
+
