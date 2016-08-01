@@ -200,7 +200,6 @@ Usage:
 
 ###### $.mooLib.sliceArguments
 
-
 *Slice Object Array Like, behave like array.slice*
 
 see: [Array.Prototype.Slice](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
@@ -212,4 +211,21 @@ see: [Array.Prototype.Slice](https://developer.mozilla.org/en/docs/Web/JavaScrip
   
   test( 1, 2, 3 );
   // will return [ 2, 3 ]
+```
+
+###### $.mooLib.applyFunction | $.mooLib.callFunction
+
+*A Function.prototype.apply/call but not throwing error when the given argument are not a function*
+
+Params:
+- function( Function )
+- context( * ), the 'this'
+- arguments( * )
+see: [Function.prototype.apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+
+Usage:
+
+```javascript
+  $.mooLib.applyFunction( function() {}, null, [ 1, 2,3 ] );
+  $.mooLib.callFunction( function() {}, null, 1, 2, 3 );
 ```
