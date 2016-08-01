@@ -198,3 +198,18 @@ Usage:
   objTest.a; // 2
 ```
 
+###### $.mooLib.sliceArguments
+
+
+*Slice Object Array Like, behave like array.slice*
+
+see: [Array.Prototype.Slice](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+
+```javascript
+  function test() {
+    return $.mooLib.sliceArguments( arguments, 1 ); 
+  }
+  
+  test( 1, 2, 3 );
+  // will return [ 2, 3 ]
+```
