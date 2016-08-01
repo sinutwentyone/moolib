@@ -18,7 +18,9 @@ Usage:
   };
   
   var secondObject = {
-    
+    city: 'Jakarta',
+    country: 'Indonesia',
+    year: 1885
   };
   
   // initialize
@@ -26,14 +28,28 @@ Usage:
   // params:
   // 1. options( Object, Array )
   var options = $.mooLib.options.create( firstObject );
+  // ***** API ***** //
   
-  // API
-    // .grab
-    
-    // params
-    // 1. propertyName( String )
-    options.grab('city') 
-    // will return 'Yogyakarta'
+  // .grab
+  
+  // params:
+  // 1. propertyName( String )
+  
+  options.grab('city') 
+  // return 'Yogyakarta'
+  
+  // .front
+  
+  // params:
+  // 1. options( Object, Array )
+  options.front( secondObject );
+  
+  options.grab('city')
+  // return 'Jakarta'
+  
+  // Basically options is an array of 'Object' or 'Array', we first searching value starting from zero index, the first 'Object' or // 'Array', if the value can't be found, then it will start searching to the next array value and so on, '.front' is array.unshift, while '.behing' is array.push basically 
+  
+  // ***** API ***** //
 ```
 
 
