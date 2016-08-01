@@ -23,6 +23,13 @@ Usage:
     year: 1885
   };
   
+  var thirdObject = {
+    city: 'Malang',
+    country: 'Indonesia',
+    year: 159,
+    province: 'Jawa Timur'
+  };
+  
   // initialize
   
   // params:
@@ -53,6 +60,26 @@ Usage:
   // the first 'Object' or 'Array', if the value can't be found, 
   // then it will start searching to the next array value and so on, 
   // basically '.front' is array.unshift, while '.behind' is array.push 
+  
+  // .behind
+  
+  // params:
+  // 1. options( Object, Array )
+  options.behind( thirdObject );
+  
+  options.grab('province')
+  // return 'Jawa Timur'
+  
+  
+  // .grabEach
+  // get value of propertyName in every Object available, returning an Array
+  
+  // params:
+  // 1. propertyName( String )
+  options.grabEach( 'country' );
+  // will return [ 'Indonesia', 'Indonesia', 'Indonesia' ]
+  // returning an Empty Array if value cant be found on every Object
+  
   
   // ***** API ***** //
 ```
