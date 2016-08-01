@@ -119,6 +119,9 @@ Usage:
   }
   // .bind
   // bind function to a specific event
+  // params:
+  // 1.eventName( String )
+  // 2.callback( Function ) function to be called when the event get triggered
   eventDispatcher.bind( 'add', addCallback );
   eventDispatcher.bind( 'sub', subCallback );
   
@@ -138,5 +141,60 @@ Usage:
   eventDispatcher.dispatch( 'sub', 3 );
   objTest.a;
   // 0
+  
+  // .unbind
+  // remove event handler
+  // params:
+  // 1.eventName( String )
+  // 2.specificCallback( Function ):Optional
+  eventDispatcher.unbind( 'add' ); // will remove every callback that binding 'add' event
+  eventDispatcher.unbind( 'add', addCallback ); // will remove 'addCallback' from remove handler list
+  
+  // .once
+  // call event handler one time
+  // params:
+  // 1.eventName( String )
+  // 2.callback( Function )
+  eventDispatcher.once( 'add', addCallback );
+  
+  objTest.a = 1;
+  
+  eventDispatcher.dispatch( 'add', 3 );
+  objTest.a; 
+  // 4
+  
+  eventDispatcher.dispatch( 'add', 3 );
+  objTest.a;
+  // 4
+  // 'addCallback' handler are removed from callback list
+  
+  // .multiBind
+  // just .bind with object as parameter
+  // params: 
+  // obj( Object )
+  eventDispatcher.multipleBind({
+  // eventName: handler //
+    'add': addCallback,
+    'sub': subCallback
+  });
+  
+  function sayHello() {
+    console.log("HELLO");
+  }
+  
+  // .bindAllWith
+  // bind desired events with the same callback
+  // params: 
+  // 1.eventNames( Array ), array of event names
+  // 2.callback( Function )
+  eventDispatcher.bindAllWith([ 'add', 'sub' ], sayHello);
+  
+  eventDispatcher.dispatch('add', 2);
+  // console "HELLO"
+  objTest.a; // 6
+  
+  eventDispatcher.dispatch('sub', 4);
+  // console "HELLO"
+  objTest.a; // 2
 ```
 
